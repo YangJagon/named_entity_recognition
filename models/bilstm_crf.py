@@ -218,7 +218,7 @@ class BiLSTM_CRF(nn.Module):
         lengths = torch.LongTensor(lengths).to(device)
         # 向前递推
         for step in range(L):
-            batch_size_t = (lengths > step).sum().item()
+            batch_size_t = len(lengths)
             if step == 0:
                 # 第一个字它的前一个标记只能是start_id
                 viterbi[:batch_size_t, step,
